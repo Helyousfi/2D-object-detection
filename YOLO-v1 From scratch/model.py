@@ -2,7 +2,6 @@ from turtle import forward
 import torch
 import torch.nn as nn
 
- 
 architecture_config = [
     # Tuple = (kernel_size, num_filters, stride, padding)
     (7, 64, 2, 3),
@@ -97,13 +96,9 @@ class YOLOv1(nn.Module):
             nn.Linear(496, Split_size*Split_size*(num_classes + num_box * 5)),
         )   
 
-if __name__ == "main":
-    def test(splitSize = 7, numBoxes = 2, numClasses = 20):
-        model = YOLOv1(in_channels=3, Split_size = splitSize, num_box = numBoxes, num_classes = numClasses)
-        x = torch.rand((2, 3, 448, 448))
-        print(model(x).shape)
-    test() 
-
-
-
-
+#if __name__ == "main":
+def test(splitSize = 7, numBoxes = 2, numClasses = 20):
+    model = YOLOv1(in_channels=3, Split_size = splitSize, num_box = numBoxes, num_classes = numClasses)
+    x = torch.rand((2, 3, 448, 448))
+    print(model(x).shape)
+test() 
